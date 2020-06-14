@@ -30,7 +30,12 @@ public final class SecureMessage {
 
     public String getMessage(String key) {
         //if statement that verifies key matches stored key
-        return message;
+        if(this.key.equals(key)){
+            return message;
+        }
+        else System.out.println("Secret key does not match stored\n" +
+                "key. Message cannot be returned without authentication.");
+        return null;
     }
 
 }//end of SecureMessage Class
