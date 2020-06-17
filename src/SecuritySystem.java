@@ -1,21 +1,23 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SecuritySystem {
+    private ArrayList<SecureMessage> myUsers;
+    private ArrayList<SecureMessage> messageList;
 
-    private ArrayList<String> messageList = new ArrayList<>();
-
-    private ArrayList<String> userList = new ArrayList<>(Arrays.asList("Max", "James", "Cody", "Mike", "John"));
-
-
-    public void verifyKey() {
-        SecureMessage m1 = new SecureMessage();
-        m1.getMessage("Jambieno");
+    public SecuritySystem(String message){
+        this.myUsers = new ArrayList<SecureMessage>();
+        this.messageList = new ArrayList<SecureMessage>();
     }
 
-    public void addMessage(String message){
-        messageList.add(message);
-    } //end of Message Array
+
+    public static void addMessage(SecureMessage message){
+        message.getMessage("Jambieno");
+    }
+
+    public void addNewUser(SecureMessage user) {
+        myUsers.add(user);
+    }
+
 
     public void printNumberOfUnreadMessages(){
         System.out.println("There is " + messageList.size() + " unread message(s) in your inbox");
@@ -28,18 +30,24 @@ public class SecuritySystem {
     }
 
     public void printUsers(){
-        for (int i = 0; i < userList.size(); i++) {
-            System.out.println((i + 1) + ". " + userList.get(i));
+        System.out.println("User List: ");
+        for (int i = 0; i < myUsers.size(); i++) {
+            System.out.println((i + 1) + ". " + myUsers.get(i).getDestName());
         }
     }
 
-    public String findUser(String searchUser) {
-        int position = userList.indexOf(searchUser);
-        if (position >= 0) {
-            return userList.get(position);
+    private int findUser(SecureMessage user){
+        return this.myUsers.indexOf(user);
+    }
+
+    public String findUsers(SecureMessage user) {
+        if (findUser(user) >= 0){
+            return user.getDestName();
         }
         return null;
     }
+
+
 
 
 

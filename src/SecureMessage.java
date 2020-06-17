@@ -6,12 +6,6 @@ public final class SecureMessage {
     private final String destName;
     private final String key;
 
-    SecureMessage(){
-        this.message = "";
-        this.sourceName = "";
-        this.destName = "";
-        this.key = "";
-    }
 
     SecureMessage(String message, String sourceName, String destName, String key){
         this.message = message;
@@ -33,7 +27,7 @@ public final class SecureMessage {
         if(this.key.equals(key)){
             return message;
         }
-        else System.out.println("Secret key does not match stored\n" +
+        else System.out.println("Secret key does not match stored " +
                 "key. Message cannot be returned without authentication.");
         return null;
     }

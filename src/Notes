@@ -1,0 +1,54 @@
+public class Contact {
+    private String name;
+    private String phoneNumber;
+
+    public Contact(String name, String phoneNumber){
+        this.name = name;
+        this.name = phoneNumber;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
+
+    public static Contact createContact (String name, String phoneNumber) {
+        return new Contact (name, phoneNumber);
+    }
+
+    public static SecureMessage createMessage (String message, String sourceName, String destName, String key) {
+        return new SecureMessage (key, message, sourceName, destName);
+    }
+
+    private ArrayList<String> messageList = new ArrayList<>();
+
+    private ArrayList<String> userList = new ArrayList<>(Arrays.asList("Max", "James", "Cody", "Mike", "John"));
+
+    public String findUser(String searchUser) {
+            int position = myUsers.indexOf(searchUser);
+            if (position >= 0) {
+                return myUsers.get(position);
+            }
+            return null;
+        }
+
+        public static void addMessage() {
+                System.out.println("Type the message you want to send: ");
+                messageList.addMessage(scanner.nextLine());
+            }
+
+            public static void searchForUser(){
+                System.out.println("Who do you want to send a message to?: ");
+                userList.printUsers();
+                String searchUser = scanner.nextLine();
+                System.out.println("Message will be sent to " + searchUser);
+            }
+
+            public SecuritySystem(){
+                    this.myUsers = new ArrayList<SecureMessage>(5);
+                    this.messageList = new ArrayList<SecureMessage>();
+                }
+}
