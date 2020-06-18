@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class SecurityDemo {
 
     private static Scanner scanner = new Scanner(System.in);
+    private static SecuritySystem securitySystem = new SecuritySystem("message");
 
     public static void main(String[] args) {
 
@@ -25,7 +26,7 @@ public class SecurityDemo {
                     break;
 
                 case 3:
-
+                    securitySystem.printUsers();
                     break;
             }//end of switch case
         }//end of while loop

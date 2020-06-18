@@ -51,4 +51,83 @@ public class Contact {
                     this.myUsers = new ArrayList<SecureMessage>(5);
                     this.messageList = new ArrayList<SecureMessage>();
                 }
+
+            private ArrayList<SecureMessage> myUsers = new ArrayList<SecureMessage>();
+                private ArrayList<SecureMessage> messageList = new ArrayList<SecureMessage>();
+
+                SecureMessage user = new SecureMessage("", "Max", "Max", "Jambieno");
+                myUsers.add(user);
+
+                public static ArrayList<SecureMessage> myUsers(){
+                        SecureMessage user1 = new SecureMessage("","Max", "Max", "Jambieno");
+                        SecureMessage user2 = new SecureMessage("", "Ksenia", "Ksenia", "Jambieno");
+                        SecureMessage user3 = new SecureMessage("", "Sally", "Sally", "Jambieno");
+                        SecureMessage user4 = new SecureMessage("", "Ali", "Ali", "Jambieno");
+                        SecureMessage user5 = new SecureMessage("", "Tyrone", "Tyrone", "Jambieno");
+
+                        ArrayList<SecureMessage> myUsers = new ArrayList<SecureMessage>();
+                        myUsers.add(user1);
+                        myUsers.add(user2);
+                        myUsers.add(user3);
+                        myUsers.add(user4);
+                        myUsers.add(user5);
+
+                        return myUsers;
+                    }
 }
+========================================================================================================================
+
+public void printNumberOfUnreadMessages(){
+        System.out.println("There is " + messageList.size() + " unread message(s) in your inbox");
+    }
+
+    public void printMessageList(){
+        for (int i = 0; i < messageList.size(); i++){
+            System.out.println((i+1) + ". " + messageList.get(i));
+        }
+    }
+
+    public void printUsers(){
+        System.out.println("User List: ");
+        for (int i = 0; i < myUsers.size(); i++) {
+            System.out.println((i + 1) + ". " + myUsers.get(i).getDestName());
+        }
+    }
+
+    private int findUser(SecureMessage user){
+        return this.myUsers.indexOf(user);
+    }
+
+    public int findUser(String searchUser) {
+       for (int i=0; i<this.myUsers.size(); i++){
+           SecureMessage user = this.myUsers.get(i);
+           if (user.getSourceName().equals(searchUser)){
+               return i;
+           }
+       }
+       return -1;
+    }
+
+    public String findUsers(SecureMessage user) {
+        if (findUser(user) >= 0){
+            return user.getDestName();
+        }
+        return null;
+    }
+
+    public SecureMessage findUsers(String name){
+        int position = findUser(name);
+        if (position >= 0){
+            return this.myUsers.get(position);
+        }
+        return null;
+    }
+
+    private static void addNewMessage(){
+            System.out.println("Type new message:");
+            String message = scanner.nextLine();
+            if (SecuritySystem.addMessage(message)){
+                System.out.println("New Message Sent!");
+            } else {
+                System.out.println("Cannot Send Message!");
+            }

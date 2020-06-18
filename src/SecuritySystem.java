@@ -1,32 +1,27 @@
 import java.util.ArrayList;
 
 public class SecuritySystem {
-    private ArrayList<SecureMessage> myUsers;
-    private ArrayList<SecureMessage> messageList;
+
+    ArrayList<SecureMessage> myUsers;
+    ArrayList<SecureMessage> messageList;
 
     public SecuritySystem(String message){
-        this.myUsers = new ArrayList<SecureMessage>();
-        this.messageList = new ArrayList<SecureMessage>();
+        SecureMessage user1 = new SecureMessage("","Max", "Max", "Jambieno");
+        SecureMessage user2 = new SecureMessage("", "Ksenia", "Ksenia", "Jambieno");
+        SecureMessage user3 = new SecureMessage("", "Sally", "Sally", "Jambieno");
+        SecureMessage user4 = new SecureMessage("", "Ali", "Ali", "Jambieno");
+        SecureMessage user5 = new SecureMessage("", "Tyrone", "Tyrone", "Jambieno");
+        this.myUsers = new ArrayList<>();
+        this.messageList = new ArrayList<>();
+        myUsers.add(user1);
+        myUsers.add(user2);
+        myUsers.add(user3);
+        myUsers.add(user4);
+        myUsers.add(user5);
     }
 
-
-    public static void addMessage(SecureMessage message){
-        message.getMessage("Jambieno");
-    }
-
-    public void addNewUser(SecureMessage user) {
-        myUsers.add(user);
-    }
-
-
-    public void printNumberOfUnreadMessages(){
-        System.out.println("There is " + messageList.size() + " unread message(s) in your inbox");
-    }
-
-    public void printMessageList(){
-        for (int i = 0; i < messageList.size(); i++){
-            System.out.println((i+1) + ". " + messageList.get(i));
-        }
+    public static String addMessage(SecureMessage message){
+        return message.getMessage("Jambieno");
     }
 
     public void printUsers(){
@@ -36,16 +31,6 @@ public class SecuritySystem {
         }
     }
 
-    private int findUser(SecureMessage user){
-        return this.myUsers.indexOf(user);
-    }
-
-    public String findUsers(SecureMessage user) {
-        if (findUser(user) >= 0){
-            return user.getDestName();
-        }
-        return null;
-    }
 
 
 
