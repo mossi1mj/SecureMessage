@@ -8,9 +8,9 @@ public final class SecureMessage {
 
 
     SecureMessage(String message, String sourceName, String destName, String key){
-        this.message = message;
         this.sourceName = sourceName;
         this.destName = destName;
+        this.message = message;
         this.key = key;
     }
 
